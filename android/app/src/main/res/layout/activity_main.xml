@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:padding="8dp"
+     android:orientation="vertical">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:orientation="horizontal"
+         android:baselineAligned="false">
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="0dp"
+             android:layout_marginEnd="8dp"
+             android:background="@drawable/emoji_grid_background"
+             android:orientation="vertical"
+             android:layout_weight="1">
+
+            <GridView
+                 android:layout_height="300dp"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:horizontalSpacing="4dp"
+                 android:padding="8dp"
+                 android:listSelector="@android:color/transparent"
+                 android:stretchMode="columnWidth"
+                 android:clipToPadding="false"
+                 android:numColumns="3"
+                 android:verticalSpacing="4dp"
+                 android:id="@+id/emojiGrid1">
+
+            </GridView>
+
+        </LinearLayout>
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="0dp"
+             android:background="@drawable/emoji_grid_background"
+             android:orientation="vertical"
+             android:layout_marginStart="8dp"
+             android:layout_weight="1">
+
+            <GridView
+                 android:layout_height="300dp"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:horizontalSpacing="4dp"
+                 android:padding="8dp"
+                 android:listSelector="@android:color/transparent"
+                 android:stretchMode="columnWidth"
+                 android:clipToPadding="false"
+                 android:numColumns="3"
+                 android:verticalSpacing="4dp"
+                 android:id="@+id/emojiGrid2">
+
+            </GridView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:fillViewport="true">
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:orientation="vertical">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:textAlignment="center"
+                 android:layout_marginTop="8dp"
+                 android:text="size"
+                 android:textStyle="bold" />
+
+            <SeekBar
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:max="512"
+                 android:min="16"
+                 android:progress="128"
+                 android:id="@+id/sizeSlider" />
+
+            <LinearLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:gravity="center"
+                 android:orientation="horizontal"
+                 android:layout_marginTop="8dp">
+
+                <Button
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:layout_marginEnd="8dp"
+                     android:enabled="false"
+                     android:id="@+id/shareButton"
+                     android:text="Share" />
+
+                <Button
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:enabled="false"
+                     android:layout_marginStart="8dp"
+                     android:id="@+id/saveButton"
+                     android:text="save to Gallery" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:layout_marginBottom="8dp"
+                 android:gravity="center"
+                 android:layout_marginTop="8dp">
+
+                <ProgressBar
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:visibility="gone"
+                     android:id="@+id/loadingIndicator"
+                     android:layout_gravity="center" />
+
+                <ImageView
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:adjustViewBounds="true"
+                     android:scaleType="fitCenter"
+                     android:id="@+id/resultImage"
+                     android:layout_gravity="center" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
