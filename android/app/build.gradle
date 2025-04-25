@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+    
+}
+
+android {
+    namespace 'com.je.emojikitchen'
+    compileSdk 33
+    
+    defaultConfig {
+        applicationId "com.je.emojikitchen"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        
+        vectorDrawables { 
+            useSupportLibrary true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        viewBinding true
+        
+    }
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+}
+
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.5.1")
+    implementation("androidx.navigation:navigation-fragment:2.5.3")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.navigation:navigation-ui:2.5.3")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.5.1")
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.squareup.moshi:moshi:1.15.2'
+    implementation 'com.squareup.moshi:moshi-adapters:1.15.2'
+}

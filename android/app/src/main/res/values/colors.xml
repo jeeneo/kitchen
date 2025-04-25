@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_dark">#202124</color>
+    <color name="grid_background_dark">#2D2E31</color>
+    <color name="selected_item_dark">#3D3E41</color>
+</resources>
