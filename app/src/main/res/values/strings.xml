@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kitchrn</string>
+    <string name="size_label">Size</string>
+    <string name="share_button">Share</string>
+    <string name="save_button">Save to Gallery</string>
+    <string name="about_title">About</string>
+    <string name="clear_cache">Clear cache</string>
+    <string name="app_title">Emoji Kitchen</string>
+    <string name="app_description">Create emoji combinations using Google\'s Emoji Kitchen.\nThis app uses the Emoji Kitchen API by @arnav-kr (github) at https://emojik.vercel.app</string>
+    <string name="app_version">Version 1.1</string>
+    <string name="result_image_description">Combined emoji result</string>
+    <string name="share_fab_description">Share button</string>
+</resources>
