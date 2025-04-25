@@ -4,7 +4,7 @@ A (lazyly coded) standalone Android app for Emoji Kitchen using [@arnav-kr's Emo
 
 Expect some bugs, this is the first android app I've made and I used AndroidIDE for most of it 🤷
 
-I hope to at one point move from using the API to supporting more like what https://emojikitchen.dev design, but an 80mb json file for such a simple app is a bit much
+I hope to at one point move from using the API to supporting something like https://emojikitchen.dev's design, but an 80mb json file for such a simple app is a bit much
 
 ---
 
