@@ -10,4 +10,4 @@ I hope to at one point move from using the API to supporting more like what http
 
 It's easy to compile or use one from the releases tab
 
-clone, cd `android`, `gradle build` (ymmv)
+clone, `cd android`, `gradle build` (ymmv)
