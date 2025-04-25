@@ -1,5 +1,5 @@
 # Keep Application class
--keep class **.MyApplication { *; }
+-keep class **.kitchen { *; }
 
 # Keep all Activities, Services, BroadcastReceivers, and ContentProviders
 -keep public class * extends android.app.Activity
@@ -18,5 +18,3 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
-
-# Add additional rules as needed for libraries (e.g., Gson, Retrofit, etc.)
