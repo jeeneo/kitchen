@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static final String PREFS = "EmojiKitchenPrefs";
-    private static final String API = "https://emojik.vercel.app/s/%s_%s?size=%d";
+    private static final String API = "https://emk.vercel.app/s/%s_%s?size=%d";
     private static final int PERMISSION_CODE = 123;
     private static final int DEFAULT_SIZE = 128;
     private static final int MIN_SIZE = 16;
