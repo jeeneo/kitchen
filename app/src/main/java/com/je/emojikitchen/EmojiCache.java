@@ -67,7 +67,6 @@ public class EmojiCache {
             return;
         }
 
-        // Only save if this is the largest image for this emoji pair
         Bitmap existing = memoryCache.get(key);
         int bmpSize = Math.max(bitmap.getWidth(), bitmap.getHeight());
         int existingSize = existing != null ? Math.max(existing.getWidth(), existing.getHeight()) : -1;

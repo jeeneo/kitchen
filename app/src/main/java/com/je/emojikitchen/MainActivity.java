@@ -10,6 +10,7 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.appcompat.app.*;
 import androidx.core.app.ActivityCompat;
@@ -336,43 +337,79 @@ public class MainActivity extends AppCompatActivity {
         } else saveToGallery();
     }
 
-    private void saveToGallery() {
-        Bitmap bmp = ((BitmapDrawable) resultImage.getDrawable()).getBitmap();
-        if (bmp == null || emoji1 == null || emoji2 == null) return;
-
-        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "EmojiKitchen");
-        dir.mkdirs();
-        File file = new File(dir, String.format("emoji_%s_%s.png", emoji1, emoji2));
-
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
-            MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, (p, uri) -> runOnUiThread(() ->
-                Toast.makeText(this, "Saved to gallery", Toast.LENGTH_SHORT).show()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Save failed", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     private void shareImage() {
-        Bitmap bmp = ((BitmapDrawable) resultImage.getDrawable()).getBitmap();
-        if (bmp == null || emoji1 == null || emoji2 == null) return;
+        if (emoji1 == null || emoji2 == null) return;
+        
+        // Get the cached file directly from EmojiCache
+        String key = String.format("emoji_%s_%s", emoji1, emoji2);
+        File cacheFile = new File(getCacheDir(), "emoji_cache/" + key + ".png");
+        
+        if (!cacheFile.exists()) {
+            Log.e("MainActivity", "Cache file does not exist: " + cacheFile.getAbsolutePath());
+            Toast.makeText(this, "Image not available", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         try {
-            File file = new File(getCacheDir(), "images/emoji_" + emoji1 + "_" + emoji2 + ".png");
-            file.getParentFile().mkdirs();
-            try (FileOutputStream out = new FileOutputStream(file)) {
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+            String authority = getPackageName() + ".fileprovider";
+            Log.d("MainActivity", "FileProvider authority: " + authority);
+            Log.d("MainActivity", "Cache file path: " + cacheFile.getAbsolutePath());
+            
+            Uri uri = FileProvider.getUriForFile(this, authority, cacheFile);
+            if (uri == null) {
+                throw new IllegalArgumentException("Failed to create content URI");
             }
-
-            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+            
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType(IMAGE_MIME_TYPE);
             intent.putExtra(Intent.EXTRA_STREAM, uri);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(Intent.createChooser(intent, "Share emoji"));
+            
+            // Verify that we have apps that can handle this intent
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(Intent.createChooser(intent, "Share emoji"));
+            } else {
+                Toast.makeText(this, "No apps available to share image", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e("MainActivity", "Failed to share image", e);
+            Toast.makeText(this, "Failed to share image: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void saveToGallery() {
+        if (emoji1 == null || emoji2 == null) return;
+
+        // Get the cached file
+        String key = String.format("emoji_%s_%s", emoji1, emoji2);
+        File cacheFile = new File(getCacheDir(), "emoji_cache/" + key + ".png");
+
+        if (!cacheFile.exists()) {
+            Toast.makeText(this, "Image not available", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "EmojiKitchen");
+        dir.mkdirs();
+        File destFile = new File(dir, key + ".png");
+
+        try {
+            // Copy the cached file to gallery
+            try (FileInputStream in = new FileInputStream(cacheFile);
+                 FileOutputStream out = new FileOutputStream(destFile)) {
+                byte[] buffer = new byte[8192];
+                int read;
+                while ((read = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, read);
+                }
+            }
+            
+            MediaScannerConnection.scanFile(this, new String[]{destFile.toString()}, null, 
+                (p, uri) -> runOnUiThread(() -> Toast.makeText(this, "Saved to gallery", Toast.LENGTH_SHORT).show()));
+                
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Save failed", Toast.LENGTH_SHORT).show();
         }
     }
 
