@@ -17,4 +17,4 @@ Building:
 
 Needed: Gradle, JDK 17, and Android 33 SDK (installed automatically)
 
-To build: clone repo, `gradle build`
+To build: clone repo, `gradle build` (ymmv)
