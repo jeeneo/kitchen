@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#f9f9f9</color>
+    <color name="error">#9f000c</color>
+    <color name="on_background">#1b1b1b</color>
+    <color name="on_error">#ffffff</color>
+    <color name="on_primary">#e2e2e2</color>
+    <color name="on_secondary">#ffffff</color>
+    <color name="on_surface">#1b1b1b</color>
+    <color name="primary">#000000</color>
+    <color name="primary_container">#3b3b3b</color>
+    <color name="secondary">#4d4d4d</color>
+    <color name="secondary_container">#9c9c9c</color>
+    <color name="surface">#f9f9f9</color>
+
+    <color name="background_dark">#131313</color>
+    <color name="error_dark">#ffb4ab</color>
+    <color name="on_background_dark">#e2e2e2</color>
+    <color name="on_error_dark">#580003</color>
+    <color name="on_primary_dark">#1b1b1b</color>
+    <color name="on_secondary_dark">#1b1b1b</color>
+    <color name="on_surface_dark">#e7e7e7</color>
+    <color name="primary_dark">#ffffff</color>
+    <color name="primary_container_dark">#d4d4d4</color>
+    <color name="secondary_dark">#c6c6c6</color>
+    <color name="secondary_container_dark">#646464</color>
+    <color name="surface_dark">#131313</color>
+
+    <color name="grid_background_dark">#1E1E1E</color>
+    <color name="selected_item_dark">#333333</color>
+</resources>
