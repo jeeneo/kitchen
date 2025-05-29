@@ -13,8 +13,14 @@ Why?
 
 ---
 
-Building: 
+building: 
 
-Needed: Gradle, JDK 17, and Android 33 SDK (installed automatically)
+prerequisites: Gradle (v8.14), JDK 17, and Android 35 SDK
 
-To build: clone repo, `gradle build` (ymmv)
+```
+git clone https://github.com/jeeneo/kitchen.git
+```
+
+```
+gradle clean assembleDebug
+```
