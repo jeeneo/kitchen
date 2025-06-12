@@ -26,6 +26,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.io.*;
 import java.util.*;
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle saved) {
         super.onCreate(saved);
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);  // This makes it work as ActionBar
 
         cleanShareCache();
 
@@ -609,7 +613,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 

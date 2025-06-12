@@ -11,7 +11,7 @@ android {
         minSdk 21
         targetSdk 35
         versionCode 1
-        versionName "1.2"
+        versionName "1.3"
         buildConfigField "String", "VERSION_SUFFIX", "\"debug\""
         // vectorDrawables { 
         //     useSupportLibrary true

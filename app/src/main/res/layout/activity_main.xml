@@ -1,209 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:theme="@style/AppTheme">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/main_menu"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/emoji_grid_background"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/emojiGrid1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/emoji_grid_height_portrait"
-                    android:clipToPadding="false"
-                    android:padding="8dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/emoji_grid_background"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/emojiGrid2"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/emoji_grid_height_portrait"
-                    android:clipToPadding="false"
-                    android:padding="8dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/size_label"
-            android:textAlignment="center"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/sizeControlContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Normal mode: slider + edit button -->
-            <LinearLayout
-                android:id="@+id/sliderRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <com.google.android.material.slider.RangeSlider
-                    android:id="@+id/sizeSlider"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="0dp"
-                    android:stepSize="1"
-                    android:valueFrom="0"
-                    android:valueTo="4" />
+                    android:background="@drawable/emoji_grid_background"
+                    android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/customSizeButton1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/custom_size"
-                    android:src="@drawable/ic_edit"
-                    android:tint="?attr/colorPrimary"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:layout_marginEnd="8dp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/emojiGrid1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/emoji_grid_height_portrait"
+                        android:clipToPadding="false"
+                        android:padding="8dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/emoji_grid_background"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/emojiGrid2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/emoji_grid_height_portrait"
+                        android:clipToPadding="false"
+                        android:padding="8dp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- Custom size mode: message + reset button + edit button -->
-            <LinearLayout
-                android:id="@+id/customSizeRow"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:visibility="gone"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp">
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/size_label"
+                android:textAlignment="center"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/customSizeInUseText"
-                    android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/sizeControlContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Normal mode: slider + edit button -->
+                <LinearLayout
+                    android:id="@+id/sliderRow"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/custom_size_in_use"
-                    android:textStyle="bold"
-                    android:textColor="?android:textColorPrimary"
-                    android:gravity="start" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp">
+
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/sizeSlider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="0dp"
+                        android:stepSize="1"
+                        android:valueFrom="0"
+                        android:valueTo="4" />
+
+                    <ImageButton
+                        android:id="@+id/customSizeButton1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/custom_size"
+                        android:src="@drawable/ic_edit"
+                        android:tint="?attr/colorPrimary"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:layout_marginEnd="8dp" />
+                </LinearLayout>
+
+                <!-- Custom size mode: message + reset button + edit button -->
+                <LinearLayout
+                    android:id="@+id/customSizeRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:visibility="gone"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/customSizeInUseText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/custom_size_in_use"
+                        android:textStyle="bold"
+                        android:textColor="?android:textColorPrimary"
+                        android:gravity="start" />
+
+                    <Button
+                        android:id="@+id/resetSizeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset"
+                        android:layout_marginStart="8dp" />
+
+                    <ImageButton
+                        android:id="@+id/customSizeButton2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/custom_size"
+                        android:src="@drawable/ic_edit"
+                        android:tint="?attr/colorPrimary"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/resetSizeButton"
+                    android:id="@+id/shareButton"
+                    style="?attr/materialButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/reset"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginEnd="8dp"
+                    android:enabled="false"
+                    android:text="@string/share_button" />
 
-                <ImageButton
-                    android:id="@+id/customSizeButton2"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/custom_size"
-                    android:src="@drawable/ic_edit"
-                    android:tint="?attr/colorPrimary"
-                    android:focusable="true"
-                    android:clickable="true"
+                <Button
+                    android:id="@+id/saveButton"
+                    style="?attr/materialButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" />
+                    android:enabled="false"
+                    android:text="@string/save_button" />
+
+                <Button
+                    android:id="@+id/copyUrlButton"
+                    style="?attr/materialButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:enabled="false"
+                    android:text="Copy URL" />
+
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/shareButton"
-                style="?attr/materialButtonStyle"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:enabled="false"
-                android:text="@string/share_button" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center_horizontal">
 
-            <Button
-                android:id="@+id/saveButton"
-                style="?attr/materialButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:enabled="false"
-                android:text="@string/save_button" />
+                <ProgressBar
+                    android:id="@+id/loadingIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
 
-            <Button
-                android:id="@+id/copyUrlButton"
-                style="?attr/materialButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:enabled="false"
-                android:text="Copy URL" />
+                <ImageView
+                    android:id="@+id/resultImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/emoji_grid_background"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@string/result_image_description"
+                    android:maxHeight="@dimen/result_max_height_portrait" />
+
+            </FrameLayout>
 
         </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="center_horizontal">
-
-            <ProgressBar
-                android:id="@+id/loadingIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/resultImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/emoji_grid_background"
-                android:scaleType="centerInside"
-                android:contentDescription="@string/result_image_description"
-                android:maxHeight="@dimen/result_max_height_portrait" />
-
-        </FrameLayout>
 
     </LinearLayout>
 </ScrollView>

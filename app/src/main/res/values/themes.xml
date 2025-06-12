@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
   <style name="Base.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
   </style>
-
   <style name="AppTheme" parent="Base.AppTheme" />
-
-  <style name="Theme.Kitchen" parent="Theme.Material3.DayNight">
+  <style name="Theme.Kitchen" parent="Theme.Material3.DayNight.NoActionBar">
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryContainer">@color/primary_container</item>
     <item name="colorOnPrimary">@color/on_primary</item>
