@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:enabled="false"
-                    android:text="Copy URL" />
+                    android:text="copy URL" />
 
             </LinearLayout>
 
