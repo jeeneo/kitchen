@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:fillViewport="true"
-    android:theme="@style/AppTheme">
+    android:theme="@style/Theme.Kitchen">
 
     <LinearLayout
         android:layout_width="match_parent"
