@@ -205,7 +205,11 @@ public class MainActivity extends AppCompatActivity {
         final int requestId = ++currentRequestId;
         String url = String.format(Locale.US, API, emoji1, emoji2, size);
         showLoading();
-        new okhttp3.OkHttpClient().newCall(new okhttp3.Request.Builder().url(url).build())
+        new okhttp3.OkHttpClient().newCall(new okhttp3.Request.Builder()
+            .url(url)
+            .addHeader("User-Agent", "EmojiKitchen/1.4 (+https://github.com/jeeneo/kitchen)")
+            .addHeader("Accept", "image/png")
+            .build())
         .enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
