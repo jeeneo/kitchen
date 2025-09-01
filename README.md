@@ -1,5 +1,7 @@
 # Emoji Kitchen
 
+## archival notice: read [this issue](https://github.com/jeeneo/dejpeg/issues/26)
+
 ![kitchen_icon](https://github.com/user-attachments/assets/d3d2bb32-811c-479f-beeb-b4608c294668)
 
 A standalone Android app for Emoji Kitchen using [@arnav-kr's Emoji Kitchen API](https://emoji-kitchen.vercel.app/) that doesn't need GAPPs.
